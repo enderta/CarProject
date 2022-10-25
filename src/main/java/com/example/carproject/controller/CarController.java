@@ -10,30 +10,31 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class CarController {
 
+	@Autowired
 	private CarRepo carRepo;
 
-	@Autowired
-	public CarController(CarRepo carRepo) {
-		this.carRepo = carRepo;
-	}
-
 	@GetMapping("/cars")
+
+	@CrossOrigin(
+			maxAge = 4800, allowCredentials = "false",
+			allowedHeaders = {"*"})
 	public Iterable<Car> getCars() {
 		return carRepo.findAll();
 	}
-	@PostMapping("/cars")
-	public Car addCar(Car car) {
+	@PostMapping(path="/cars", consumes = {"application/json"})
+	@CrossOrigin()
+	public Car createCar(@RequestBody Car car) {
 		return carRepo.save(car);
 	}
-	@DeleteMapping("/cars/{id}")
+	@DeleteMapping(path = "/cars/{id}",consumes = {"application/json"})
 	public void deleteCar(@PathVariable Long id) {
 		carRepo.deleteById(id);
 	}
-
 	@GetMapping("/cars/{id}")
 	public Car getCar(@PathVariable Long id) {
 		return carRepo.findById(id).get();
 	}
+
 
 
 
