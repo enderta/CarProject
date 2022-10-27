@@ -38,7 +38,4 @@ public ResponseEntity<?> getOwnerById(@PathVariable long id) {
 	return ResponseEntity.ok(ownerRepo.findById(id));
 }
 
-
-
-
 }
