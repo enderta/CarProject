@@ -18,8 +18,6 @@ private long id;
 private String brand, model, color,registerNumber;
 private int year, price;
 
-@OneToOne(mappedBy = "car")
-private Owners owners;
 
 
 
