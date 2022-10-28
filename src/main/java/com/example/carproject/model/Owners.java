@@ -2,10 +2,7 @@ package com.example.carproject.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -15,6 +12,9 @@ public class Owners {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long ownerId;
 	private String firstName, lastName, address, city, email;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id", referencedColumnName = "id")
+	private Car car;
 
 
 }
