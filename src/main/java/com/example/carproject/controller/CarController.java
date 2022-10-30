@@ -3,15 +3,19 @@ package com.example.carproject.controller;
 import com.example.carproject.model.Car;
 import com.example.carproject.repos.CarRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController()
 @RequestMapping("/api")
 @CrossOrigin(origins="*", allowedHeaders="*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class CarController {
 
-@Autowired
+
 private CarRepo carRepo;
 
 @GetMapping("/cars")

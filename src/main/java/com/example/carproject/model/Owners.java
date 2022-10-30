@@ -1,20 +1,22 @@
 package com.example.carproject.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@Table(name = "owners")
 public class Owners {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long ownerId;
 	private String firstName, lastName, address, city, email;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id", referencedColumnName = "id")
-	private Car car;
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "owners")
+	@JsonManagedReference
+		private Car car;
 
 
 }
