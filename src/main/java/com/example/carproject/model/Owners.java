@@ -14,7 +14,7 @@ public class Owners {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long ownerId;
 	private String firstName, lastName, address, city, email;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "owners")
+	@OneToOne(cascade = CascadeType.ALL,mappedBy = "owner")
 	@JsonManagedReference
 		private Car car;
 

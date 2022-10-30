@@ -2,6 +2,7 @@ package com.example.carproject.controller;
 
 import com.example.carproject.model.Car;
 import com.example.carproject.repos.CarRepo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +16,9 @@ import java.util.Map;
 @CrossOrigin(origins="*", allowedHeaders="*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class CarController {
 
-
+@Autowired
 private CarRepo carRepo;
+
 
 @GetMapping("/cars")
 public ResponseEntity<?> getAllCars() {
@@ -26,8 +28,7 @@ public ResponseEntity<?> getAllCars() {
 @PostMapping("/cars")
 public ResponseEntity<?> addCar(@RequestBody Car car) {
 	carRepo.save(car);
-	return ResponseEntity.status(201).body(car);
-}
+	return ResponseEntity.status(201).body(car);}
 
 @DeleteMapping("/cars/{id}")
 public ResponseEntity<?> deleteCar(@PathVariable long id) {
@@ -37,9 +38,11 @@ public ResponseEntity<?> deleteCar(@PathVariable long id) {
 	}
 	return ResponseEntity.status(400).build();
 }
-
 @GetMapping("/cars/{id}")
 public ResponseEntity<?> getCarById(@PathVariable long id) {
 	return ResponseEntity.ok(carRepo.findById(id));
 }
+
+
+
 }

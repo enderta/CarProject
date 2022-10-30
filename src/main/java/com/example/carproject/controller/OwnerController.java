@@ -13,10 +13,8 @@ import java.util.List;
 @RequestMapping("/api")
 @CrossOrigin(origins="*", allowedHeaders="*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class OwnerController {
-
-
+@Autowired
 private OwnerRepo ownerRepo;
-
 @GetMapping("/owners")
 public ResponseEntity<?> getAllOwners() {
 	return ResponseEntity.ok(ownerRepo.findAll());
@@ -33,11 +31,9 @@ public ResponseEntity<?> deleteOwner(@PathVariable long id) {
 		return ResponseEntity.status(204).build();
 	}
 	return ResponseEntity.status(400).build();
-
 }
 @GetMapping("/owners/{id}")
 public ResponseEntity<?> getOwnerById(@PathVariable long id) {
 	return ResponseEntity.ok(ownerRepo.findById(id));
 }
-
 }
