@@ -8,7 +8,6 @@ import javax.persistence.*;
 @Entity
 @Data
 @Table(name = "owners")
-@RestResource(path = "owners", rel = "owners")
 public class Owners {
 
 	@Id

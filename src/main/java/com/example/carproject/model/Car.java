@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "cars")
-@RestResource(path = "cars", rel = "cars")
 public class Car {
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
