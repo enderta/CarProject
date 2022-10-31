@@ -10,7 +10,5 @@ public interface OwnerRepo extends JpaRepository<Owners, Long> {
 public Owners save(Owners owner);
 public Owners findById(long id);
 public void deleteById(long id);
-
-
-List<Owners> findAll();
+public List<Owners> findAll();
 }

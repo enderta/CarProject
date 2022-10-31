@@ -12,7 +12,7 @@ public interface CarRepo extends JpaRepository<Car, Long> {
 public Car save(Car car);
 public Car findById(long id);
 public void deleteById(long id);
-List<Car> findAll();
+public List<Car> findAll();
 
 
 
