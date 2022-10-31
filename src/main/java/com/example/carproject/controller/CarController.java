@@ -34,6 +34,7 @@ public ResponseEntity<?> addCar(@RequestBody Car car) {
 }
 
 @DeleteMapping("/cars/{id}")
+@ResponseStatus(HttpStatus.NO_CONTENT)
 public ResponseEntity<?> deleteCar(@PathVariable long id) {
 	carRepo.deleteById(id);
 	if (ResponseEntity.status(204).build().getStatusCode().is2xxSuccessful()) {

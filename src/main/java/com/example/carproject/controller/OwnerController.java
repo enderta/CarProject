@@ -26,7 +26,7 @@ public ResponseEntity<?> addOwner(@RequestBody Owners owner) {
 	return ResponseEntity.status(201).body(owner);
 }
 @DeleteMapping("/owners/{id}")
-@ResponseStatus(HttpStatus.CREATED)
+@ResponseStatus(HttpStatus.NO_CONTENT)
 public ResponseEntity<?> deleteOwner(@PathVariable long id) {
 	ownerRepo.deleteById(id);
 	if (ResponseEntity.status(204).build().getStatusCode().is2xxSuccessful()) {
