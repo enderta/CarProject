@@ -19,7 +19,7 @@ private OwnerRepo ownerRepo;
 public ResponseEntity<?> getAllOwners() {
 	return ResponseEntity.ok(ownerRepo.findAll());
 }
-@PostMapping("/owners")
+@PostMapping(path="/owners",consumes = "application/json")
 public ResponseEntity<?> addOwner(@RequestBody Owners owner) {
 	ownerRepo.save(owner);
 	return ResponseEntity.status(201).body(owner);
