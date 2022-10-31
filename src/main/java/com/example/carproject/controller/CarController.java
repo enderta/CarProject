@@ -27,6 +27,7 @@ public ResponseEntity<?> getAllCars() {
 }
 
 @PostMapping(path="/cars",consumes = "application/json")
+@ResponseStatus(HttpStatus.CREATED)
 public ResponseEntity<?> addCar(@RequestBody Car car) {
 	carRepo.save(car);
 	return ResponseEntity.status(201).body(car);

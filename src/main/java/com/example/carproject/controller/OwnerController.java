@@ -3,6 +3,7 @@ package com.example.carproject.controller;
 import com.example.carproject.model.Owners;
 import com.example.carproject.repos.OwnerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,7 @@ public ResponseEntity<?> addOwner(@RequestBody Owners owner) {
 	return ResponseEntity.status(201).body(owner);
 }
 @DeleteMapping("/owners/{id}")
+@ResponseStatus(HttpStatus.CREATED)
 public ResponseEntity<?> deleteOwner(@PathVariable long id) {
 	ownerRepo.deleteById(id);
 	if (ResponseEntity.status(204).build().getStatusCode().is2xxSuccessful()) {
