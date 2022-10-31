@@ -9,10 +9,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "cars")
+@RestResource(path = "cars", rel = "cars")
 public class Car {
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
