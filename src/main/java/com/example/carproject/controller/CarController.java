@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController()
-@RequestMapping(value = "/api",produces = "application/json")
-@CrossOrigin(origins="*", allowedHeaders="*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+@RequestMapping(value = "/api", produces = "application/json")
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class CarController {
 
 
@@ -28,7 +29,8 @@ public ResponseEntity<?> getAllCars() {
 @PostMapping("/cars")
 public ResponseEntity<?> addCar(@RequestBody Car car) {
 	carRepo.save(car);
-	return ResponseEntity.status(201).body(car);}
+	return ResponseEntity.status(201).body(car);
+}
 
 @DeleteMapping("/cars/{id}")
 public ResponseEntity<?> deleteCar(@PathVariable long id) {
@@ -38,11 +40,15 @@ public ResponseEntity<?> deleteCar(@PathVariable long id) {
 	}
 	return ResponseEntity.status(400).build();
 }
+
 @GetMapping("/cars/{id}")
 public ResponseEntity<?> getCarById(@PathVariable long id) {
-	return ResponseEntity.ok(carRepo.findById(id));
+	Car car = carRepo.findById(id);
+	if (car != null) {
+		return ResponseEntity.ok(car);
+	}
+	return ResponseEntity.status(404).build();
 }
-
 
 
 }

@@ -34,6 +34,10 @@ public ResponseEntity<?> deleteOwner(@PathVariable long id) {
 }
 @GetMapping("/owners/{id}")
 public ResponseEntity<?> getOwnerById(@PathVariable long id) {
-	return ResponseEntity.ok(ownerRepo.findById(id));
+	Owners owner = ownerRepo.findById(id);
+	if (owner != null) {
+		return ResponseEntity.ok(owner);
+	}
+	return ResponseEntity.status(404).build();
 }
 }
