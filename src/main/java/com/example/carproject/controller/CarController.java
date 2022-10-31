@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.Map;
 
 @RestController()
-@RequestMapping("/api")
+@RequestMapping(value = "/api",produces = "application/json")
 @CrossOrigin(origins="*", allowedHeaders="*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class CarController {
 
-@Autowired
+
 private CarRepo carRepo;
 
 
