@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -20,8 +21,9 @@ public class Owners {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long ownerId;
 	private String firstName, lastName, address, city, email;
-	@OneToOne(cascade = CascadeType.ALL,mappedBy = "owner")
-		private Car car;
+	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private List<Car> cars;
 
 
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -17,14 +18,10 @@ public class Car {
 private long id;
 private String brand, model, color,registerNumber;
 private int year, price;
-@OneToOne(cascade = CascadeType.ALL)
-@JoinColumn(name = "owner_id", referencedColumnName = "ownerId")
+@ManyToOne
+@JoinColumn(name = "owner_id")
+@JsonBackReference
 private Owners owner;
-
-
-
-
-
 
 
 }
