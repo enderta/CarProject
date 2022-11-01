@@ -21,7 +21,6 @@ public class Owners {
 	private long ownerId;
 	private String firstName, lastName, address, city, email;
 	@OneToOne(cascade = CascadeType.ALL,mappedBy = "owner")
-	@JsonManagedReference
 		private Car car;
 
 
