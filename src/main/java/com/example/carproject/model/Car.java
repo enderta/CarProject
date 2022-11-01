@@ -1,10 +1,7 @@
 package com.example.carproject.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Generated;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,6 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "cars")
+@Builder
 public class Car {
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
